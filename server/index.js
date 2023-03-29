@@ -1,23 +1,23 @@
-// enable dotenv
 require("dotenv").config();
-
-// import express, cors, and db connection
 const express = require("express");
 const cors = require("cors");
+
+// Import database connection
 const pool = require("./db-conn");
 
-// create express app with port 5000
+// Create express app on port 5000
 const app = express();
 const PORT = process.env.PORT || 5000;
 
-// middleware
 app.use(cors());
 app.use(express.json());
 
-// routes
+// ## ROUTES ##
+
+// Users
 
 // create new item in db
-app.post("/list", async (req, res) => {
+app.post("/u", async (req, res) => {
   try {
     const { description } = req.body;
     const newItem = await pool.query(
